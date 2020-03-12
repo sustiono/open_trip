@@ -36,4 +36,12 @@ class User < ApplicationRecord
   belongs_to  :role
 
   validates :name, :address, :phone_number, :role_id, presence: true
+
+  def is_traveler?
+    role.name == 'traveler'
+  end
+
+  def is_travel_agent?
+    role.name == 'travel_agent'
+  end
 end

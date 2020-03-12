@@ -16,16 +16,19 @@ class SchedulesController < ApplicationController
   # GET /schedules/new
   def new
     @schedule = Schedule.new
+    authorize @schedule
   end
 
   # GET /schedules/1/edit
   def edit
+    authorize @schedule
   end
 
   # POST /schedules
   # POST /schedules.json
   def create
     @schedule = Schedule.new(schedule_params)
+    authorize @schedule
 
     respond_to do |format|
       if @schedule.save
@@ -41,6 +44,7 @@ class SchedulesController < ApplicationController
   # PATCH/PUT /schedules/1
   # PATCH/PUT /schedules/1.json
   def update
+    authorize @schedule
     respond_to do |format|
       if @schedule.update(schedule_params)
         format.html { redirect_to @schedule, notice: 'Schedule was successfully updated.' }
@@ -55,6 +59,7 @@ class SchedulesController < ApplicationController
   # DELETE /schedules/1
   # DELETE /schedules/1.json
   def destroy
+    authorize @schedule
     @schedule.destroy
     respond_to do |format|
       format.html { redirect_to schedules_url, notice: 'Schedule was successfully destroyed.' }
