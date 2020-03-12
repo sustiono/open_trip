@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @schedule.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @schedule.end_time %>
+</p>
+
+<p>
+  <strong>Minimum person:</strong>
+  <%= @schedule.minimum_person %>
+</p>
+
+<p>
+  <strong>Maximum person:</strong>
+  <%= @schedule.maximum_person %>
+</p>
+
+<p>
+  <strong>Last booking time:</strong>
+  <%= @schedule.last_booking_time %>
+</p>
+
+<p>
+  <strong>Is recurring schedule:</strong>
+  <%= @schedule.is_recurring_schedule %>
+</p>
+
+<%= link_to 'Edit', edit_schedule_path(@schedule) %> |
+<%= link_to 'Back', schedules_path %>

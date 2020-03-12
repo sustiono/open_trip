@@ -32,6 +32,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many    :schedules
   belongs_to  :role
 
   validates :name, :address, :phone_number, :role_id, presence: true
