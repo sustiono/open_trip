@@ -1,0 +1,2 @@
+module OpenTripsHelper
+end

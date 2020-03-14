@@ -1,0 +1,9 @@
+<%= form_with(url: open_trips_path, method: :get, local: true) do %>
+  <%= text_field_tag(:q, params[:q]) %>
+<% end %>
+
+<ul>
+  <% @trips.each do |trip| %>
+    <li><%= trip.destination %></li>
+  <% end %>
+</ul>

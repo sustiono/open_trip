@@ -7,5 +7,5 @@ Rails.application.routes.draw do
 
   resources :schedules
 
-  resources :trips, only: :index
+  resources :open_trips, only: :index
 end
