@@ -4,6 +4,6 @@ class TripsController < ApplicationController
     if params[:q].present?
       @trips = @trips.where('destination ILIKE ? ', "#{params[:q]}%")
     end
-    render 'index'
+    authorize :trip
   end
 end
