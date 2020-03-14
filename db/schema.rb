@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_14_160215) do
+ActiveRecord::Schema.define(version: 2020_03_14_180156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,19 +22,19 @@ ActiveRecord::Schema.define(version: 2020_03_14_160215) do
     t.string "description"
   end
 
-  create_table "schedules", force: :cascade do |t|
+  create_table "trips", force: :cascade do |t|
+    t.text "destination", default: "", null: false
+    t.text "meeting_point", default: "", null: false
     t.datetime "start_time"
     t.datetime "end_time"
-    t.integer "minimum_person"
-    t.integer "maximum_person"
+    t.integer "minimum_person", default: 1, null: false
+    t.integer "maximum_person", default: 1, null: false
     t.datetime "last_booking_time"
     t.boolean "is_recurring_schedule", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
-    t.string "meeting_point", default: "", null: false
-    t.string "destination", default: "", null: false
-    t.index ["user_id"], name: "index_schedules_on_user_id"
+    t.index ["user_id"], name: "index_trips_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -54,6 +54,6 @@ ActiveRecord::Schema.define(version: 2020_03_14_160215) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
-  add_foreign_key "schedules", "users"
+  add_foreign_key "trips", "users"
   add_foreign_key "users", "roles"
 end

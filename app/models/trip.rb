@@ -1,15 +1,15 @@
 # == Schema Information
 #
-# Table name: schedules
+# Table name: trips
 #
 #  id                    :bigint           not null, primary key
-#  destination           :string           default(""), not null
+#  destination           :text             default(""), not null
 #  end_time              :datetime
 #  is_recurring_schedule :boolean          default(FALSE), not null
 #  last_booking_time     :datetime
-#  maximum_person        :integer
-#  meeting_point         :string           default(""), not null
-#  minimum_person        :integer
+#  maximum_person        :integer          default(1), not null
+#  meeting_point         :text             default(""), not null
+#  minimum_person        :integer          default(1), not null
 #  start_time            :datetime
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
@@ -17,14 +17,14 @@
 #
 # Indexes
 #
-#  index_schedules_on_user_id  (user_id)
+#  index_trips_on_user_id  (user_id)
 #
 # Foreign Keys
 #
 #  fk_rails_...  (user_id => users.id)
 #
 
-class Schedule < ApplicationRecord
+class Trip < ApplicationRecord
   belongs_to  :user
 
   validates  :start_time, :end_time, :user_id, :maximum_person,

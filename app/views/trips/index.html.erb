@@ -1,9 +1,39 @@
-<%= form_with(url: trips_path, method: :get, local: true) do %>
-  <%= text_field_tag(:q, params[:q]) %>
-<% end %>
+<p id="notice"><%= notice %></p>
 
-<ul>
-  <% @trips.each do |trip| %>
-    <li><%= trip.destination %></li>
-  <% end %>
-</ul>
+<h1>Trips</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Destination</th>
+      <th>Start time</th>
+      <th>End time</th>
+      <th>Minimum person</th>
+      <th>Maximum person</th>
+      <th>Last booking time</th>
+      <th>Is recurring schedule</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @trips.each do |trip| %>
+      <tr>
+        <td><%= trip.destination %></td>
+        <td><%= trip.start_time %></td>
+        <td><%= trip.end_time %></td>
+        <td><%= trip.minimum_person %></td>
+        <td><%= trip.maximum_person %></td>
+        <td><%= trip.last_booking_time %></td>
+        <td><%= trip.is_recurring_schedule %></td>
+        <td><%= link_to 'Show', trip %></td>
+        <td><%= link_to 'Edit', edit_trip_path(trip) %></td>
+        <td><%= link_to 'Destroy', trip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Trip', new_trip_path %>

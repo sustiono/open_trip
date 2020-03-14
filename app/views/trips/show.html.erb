@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <h1><%= @trip.destination %></h1>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @trip.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @trip.end_time %>
+</p>
+
+<p>
+  <strong>Minimum person:</strong>
+  <%= @trip.minimum_person %>
+</p>
+
+<p>
+  <strong>Meeting point:</strong>
+  <%= @trip.meeting_point %>
+</p>
+
+<p>
+  <strong>Maximum person:</strong>
+  <%= @trip.maximum_person %>
+</p>
+
+<p>
+  <strong>Last booking time:</strong>
+  <%= @trip.last_booking_time %>
+</p>
+
+<p>
+  <strong>Is recurring schedule:</strong>
+  <%= @trip.is_recurring_schedule %>
+</p>
+
+<%= link_to 'Edit', edit_trip_path(@trip) %> |
+<%= link_to 'Back', trips_path %>

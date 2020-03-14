@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resources :schedules
+  resources :trips
 
   resources :open_trips, only: :index
 end
