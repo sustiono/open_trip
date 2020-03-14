@@ -1,4 +1,8 @@
 class SchedulePolicy < ApplicationPolicy
+  def index?
+    user.is_travel_agent?
+  end
+
   def new?
     user.is_travel_agent?
   end

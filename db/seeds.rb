@@ -5,3 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+1.upto(10) do |i|
+  start_time = Faker::Time.forward(days: 10 + i)
+  Schedule.create({
+    start_time: start_time,
+    end_time: start_time + 2.days,
+    destination: Faker::Address.city,
+    last_booking_time: start_time - 5.days,
+    meeting_point: Faker::Address.street_name,
+    user: User.find_by_role_id(Role.travel_agent.id),
+    minimum_person: Faker::Number.between(from: 1, to: 5),
+    maximum_person: Faker::Number.between(from: 10, to: 20)
+  })
+end
