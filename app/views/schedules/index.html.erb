@@ -5,10 +5,12 @@
 <table>
   <thead>
     <tr>
+      <th>Destination</th>
       <th>Start time</th>
       <th>End time</th>
       <th>Minimum person</th>
       <th>Maximum person</th>
+      <th>Meeting Point</th>
       <th>Last booking time</th>
       <th>Is recurring schedule</th>
       <th colspan="3"></th>
@@ -18,10 +20,12 @@
   <tbody>
     <% @schedules.each do |schedule| %>
       <tr>
+        <td><%= schedule.destination %></td>
         <td><%= schedule.start_time %></td>
         <td><%= schedule.end_time %></td>
         <td><%= schedule.minimum_person %></td>
         <td><%= schedule.maximum_person %></td>
+        <td><%= schedule.meeting_point %></td>
         <td><%= schedule.last_booking_time %></td>
         <td><%= schedule.is_recurring_schedule %></td>
         <td><%= link_to 'Show', schedule %></td>

@@ -77,7 +77,7 @@ class SchedulesController < ApplicationController
     def schedule_params
       params.require(:schedule).permit(
         :start_time, :end_time, :minimum_person, :maximum_person,
-        :last_booking_time, :is_recurring_schedule
+        :last_booking_time, :is_recurring_schedule, :meeting_point, :destination
       ).merge(user_id: current_user.id)
     end
 end

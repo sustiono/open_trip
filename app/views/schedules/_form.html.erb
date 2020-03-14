@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :destination %>
+    <%= form.text_field :destination %>
+  </div>
+
+  <div class="field">
     <%= form.label :start_time %>
     <%= form.datetime_select :start_time %>
   </div>
@@ -23,12 +28,17 @@
 
   <div class="field">
     <%= form.label :minimum_person %>
-    <%= form.text_field :minimum_person %>
+    <%= form.number_field :minimum_person %>
   </div>
 
   <div class="field">
     <%= form.label :maximum_person %>
-    <%= form.text_field :maximum_person %>
+    <%= form.number_field :maximum_person %>
+  </div>
+
+  <div class="field">
+    <%= form.label :meeting_point %>
+    <%= form.text_field :meeting_point %>
   </div>
 
   <div class="field">

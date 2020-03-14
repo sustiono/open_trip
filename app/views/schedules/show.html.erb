@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <h1><%= @schedule.destination %></h1>
+</p>
+
+<p>
   <strong>Start time:</strong>
   <%= @schedule.start_time %>
 </p>
@@ -18,6 +22,11 @@
 <p>
   <strong>Maximum person:</strong>
   <%= @schedule.maximum_person %>
+</p>
+
+<p>
+  <strong>Meeting point:</strong>
+  <%= @schedule.meeting_point %>
 </p>
 
 <p>
