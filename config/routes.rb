@@ -5,7 +5,9 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resources :trips
+  resources :trips do
+    resource  :booking, controller: 'trips/bookings', only: :create
+  end
 
   resources :open_trips, only: :index
 end

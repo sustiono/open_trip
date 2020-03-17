@@ -25,6 +25,8 @@
 #
 
 class Trip < ApplicationRecord
+  has_many    :booked_trips
+
   belongs_to  :user
 
   validates  :start_time, :end_time, :user_id, :maximum_person,

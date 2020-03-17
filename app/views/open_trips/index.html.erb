@@ -4,6 +4,9 @@
 
 <ul>
   <% @trips.each do |trip| %>
-    <li><%= trip.destination %></li>
+    <li>
+      <%= trip.destination %>
+      <%= link_to 'Book Now', trip_booking_path(trip), method: :post %>
+    </li>
   <% end %>
 </ul>

@@ -10,10 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_14_180156) do
+ActiveRecord::Schema.define(version: 2020_03_17_150256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "booked_trips", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "trip_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "payment_status_id", null: false
+    t.index ["payment_status_id"], name: "index_booked_trips_on_payment_status_id"
+    t.index ["trip_id"], name: "index_booked_trips_on_trip_id"
+    t.index ["user_id"], name: "index_booked_trips_on_user_id"
+  end
+
+  create_table "payment_statuses", force: :cascade do |t|
+    t.string "name", default: "Pending", null: false
+    t.string "status_code", default: "1", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.integer "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "booked_trip_id", null: false
+    t.index ["booked_trip_id"], name: "index_payments_on_booked_trip_id"
+  end
 
   create_table "roles", force: :cascade do |t|
     t.string "name"
@@ -54,6 +80,10 @@ ActiveRecord::Schema.define(version: 2020_03_14_180156) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
+  add_foreign_key "booked_trips", "payment_statuses"
+  add_foreign_key "booked_trips", "trips"
+  add_foreign_key "booked_trips", "users"
+  add_foreign_key "payments", "booked_trips"
   add_foreign_key "trips", "users"
   add_foreign_key "users", "roles"
 end
