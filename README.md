@@ -13,6 +13,9 @@ rails db:migrate
 rails db:seed
 rails s
 ```
+```
+Open from your browser http://localhost:3000
+```
 
 ## Accounts
 ```
