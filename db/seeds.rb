@@ -1,7 +1,37 @@
+if Role.count < 1
+  Role.create([
+    { name: 'traveler', description: 'Traveler' },
+    { name: 'travel_agent', description: 'Travel Agent' }
+  ])
+end
+
+if User.count < 1
+  User.create([
+    {
+      name: 'Traveler1',
+      email: 'traveler1@mail.com',
+      address: 'Jl. Raya Pangandaran',
+      phone_number: '+6285123123123',
+      role_id: Role.traveler.id,
+      password: 'asdfasdf',
+      password_confirmation: 'asdfasdf'
+    },
+    {
+      name: 'Traveler Agent1',
+      email: 'traveler_agent1@mail.com',
+      address: 'Jl. Raya Pangandaran',
+      phone_number: '+6282123123123',
+      role_id: Role.travel_agent.id,
+      password: 'asdfasdf',
+      password_confirmation: 'asdfasdf'
+    }
+  ])
+end
+
 if Trip.count < 1
-  1.upto(10) do |i|
+  1.upto(15) do |i|
     start_time = Faker::Time.forward(days: 10 + i)
-    Schedule.create({
+    Trip.create({
       start_time: start_time,
       end_time: start_time + 2.days,
       destination: Faker::Address.city,
