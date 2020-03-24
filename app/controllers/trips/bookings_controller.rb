@@ -1,4 +1,6 @@
 class Trips::BookingsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     booked_trip = BookedTrip.new(booking_params)
     if booked_trip.save!

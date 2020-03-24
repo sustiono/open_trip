@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   end
 
   resources :open_trips, only: :index
+
+  resources :my_trips, only: :index
 end

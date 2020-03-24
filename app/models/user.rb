@@ -32,7 +32,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many    :open_trips, class_name: 'BookedTrip', foreign_key: :user_id
+  has_many    :booked_trips, class_name: 'BookedTrip', foreign_key: :user_id
   has_many    :trips
   belongs_to  :role
 

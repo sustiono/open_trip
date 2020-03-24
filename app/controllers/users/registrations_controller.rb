@@ -7,7 +7,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-    return redirect_to root_path if params[:type].nil?
+    return redirect_to root_path if current_user.present? && params[:type].nil?
 
     if params[:type] == 'travel_agent'
       @role_id = Role.travel_agent.id

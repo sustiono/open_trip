@@ -1,0 +1,16 @@
+<h1>MyTrips#index</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Destination</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @my_trips.each do |my_trip| %>
+      <tr>
+        <td><%= my_trip.trip.destination %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
