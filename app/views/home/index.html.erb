@@ -1,34 +1,56 @@
 <header>
-  <div id="homeCarousel" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#homeCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#homeCarousel" data-slide-to="1"></li>
+  <div id='homeCarousel' class='carousel slide' data-ride='carousel'>
+    <ol class='carousel-indicators'>
+      <li data-target='#homeCarousel' data-slide-to='0' class='active'></li>
+      <li data-target='#homeCarousel' data-slide-to='1'></li>
     </ol>
-    <div class="carousel-inner" role="listbox">
+    <div class='carousel-inner' role='listbox'>
       <!-- Slide One - Set the background image for this slide in the line below -->
-      <div class="carousel-item active" style="background-image: url('/assets/traveler5.jpg')">
-        <div class="carousel-caption d-none d-md-block">
-          <h2 class="display-5">Do you have travel services?</h2>
-          <p class="lead">You're in the right place, millions of travelers are looking for the best travel agents like you!</p>
-          <%= link_to 'Become a travel agent', new_user_registration_path(type: 'travel_agent'), class: "btn btn-warning" %>
+      <div class='carousel-item active' style="background-image: url('/assets/traveler5.jpg')">
+        <div class='carousel-caption d-none d-md-block'>
+          <h2 class='display-5'>Do you have travel services?</h2>
+          <p class='lead'>You're in the right place, millions of travelers are looking for the best travel agents like you!</p>
+          <%= link_to 'Become a travel agent', new_user_registration_path(type: 'travel_agent'), class: 'btn btn-warning' %>
         </div>
       </div>
       <!-- Slide Two - Set the background image for this slide in the line below -->
-      <div class="carousel-item" style="background-image: url('/assets/traveler.jpg')">
-        <div class="carousel-caption d-none d-md-block">
-          <h2 class="display-4">Travel addict?</h2>
-          <p class="lead">Find the best place for your vacation only here!</p>
-          <%= link_to 'Become a traveler', new_user_registration_path(type: 'traveler'), class: "btn btn-warning" %>
+      <div class='carousel-item' style="background-image: url('/assets/traveler.jpg')">
+        <div class='carousel-caption d-none d-md-block'>
+          <h2 class='display-4'>Travel addict?</h2>
+          <p class='lead'>Find the best place for your vacation only here!</p>
+          <%= link_to 'Become a traveler', new_user_registration_path(type: 'traveler'), class: 'btn btn-warning' %>
         </div>
       </div>
     </div>
-    <a class="carousel-control-prev" href="#homeCarousel" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
+    <a class='carousel-control-prev' href='#homeCarousel' role='button' data-slide='prev'>
+      <span class='carousel-control-prev-icon' aria-hidden='true'></span>
+      <span class='sr-only'>Previous</span>
     </a>
-    <a class="carousel-control-next" href="#homeCarousel" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
+    <a class='carousel-control-next' href='#homeCarousel' role='button' data-slide='next'>
+      <span class='carousel-control-next-icon' aria-hidden='true'></span>
+      <span class='sr-only'>Next</span>
     </a>
   </div>
 </header>
+
+<div class='container mt-5 mb-5'>
+  <div class='row justify-content-md-center mb-5'>
+    <div class='col-auto'>
+      <h2 class='display-5 text-center'>Popular Trips</h2>
+    </div>
+  </div>
+  <div class='row justify-content-start'>
+    <% @trips.each do |trip| %>
+      <div class='col-4 mb-4'>
+        <div class='card'>
+          <img class='card-img-top' src='/assets/traveler2.jpg' alt='Card image cap'>
+          <div class='card-body'>
+            <h5 class='card-title'><%= trip.destination %></h5>
+            <p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href='#' class='btn btn-warning'>Booking Now</a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
