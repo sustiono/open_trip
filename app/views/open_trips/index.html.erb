@@ -1,14 +1,26 @@
-<%= form_with(url: open_trips_path, method: :get, local: true) do %>
-  <%= text_field_tag(:q, params[:q]) %>
-<% end %>
-
-<ul>
-  <% @trips.each do |trip| %>
-    <li>
-      <%= trip.destination %>
-      <%= link_to 'Book Now', trip_booking_path(trip), method: :post %>
-    </li>
+<div class='container'>
+  <%= form_with(url: open_trips_path, method: :get, local: true, class: 'mt-5 mb-4') do %>
+    <%= text_field_tag(:q, params[:q], class: 'form-control', placeholder: 'Search your destination...') %>
   <% end %>
-</ul>
 
-<%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+  <div class='row justify-content-start'>
+    <% @trips.each do |trip| %>
+      <div class='col-4'>
+        <div class='card mb-4'>
+          <img class='card-img-top' src='/assets/traveler2.jpg' alt='Card image cap'>
+          <div class='card-body'>
+            <h5 class='card-title'>
+              <%= trip.destination %>
+            </h5>
+            <p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <div class='col text-right p-0'>
+              <a href='#' class='btn btn-primary'>View detail</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+</div>
