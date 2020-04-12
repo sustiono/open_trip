@@ -1,26 +1,12 @@
 <div class='container'>
-  <%= form_with(url: open_trips_path, method: :get, local: true, class: 'mt-5 mb-4') do %>
-    <%= text_field_tag(:q, params[:q], class: 'form-control', placeholder: 'Search your destination...') %>
+  <% if signed_in? %>
+    <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%= link_to 'Sign In', new_user_session_path %>
   <% end %>
 
-  <div class='row justify-content-start'>
-    <% @trips.each do |trip| %>
-      <div class='col-4'>
-        <div class='card mb-4'>
-          <img class='card-img-top' src='/assets/traveler2.jpg' alt='Card image cap'>
-          <div class='card-body'>
-            <h5 class='card-title'>
-              <%= trip.destination %>
-            </h5>
-            <p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <div class='col text-right p-0'>
-              <a href='#' class='btn btn-primary'>View detail</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
+  <%= content_tag :div, id: 'open_trip_panel', open_trips: @open_trips.to_json do %>
+  <% end %>
 
-  <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+  <%= javascript_pack_tag 'traveler/open_trip' %>
 </div>
