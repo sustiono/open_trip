@@ -1,25 +1,21 @@
 import types from '../../../constantas/types'
 
 let defaultState = {
-  openTrips: []
+  trips: [],
+  searchKeyword: ''
 }
 let newState
-const traveler = (state = {
-  outlet: {},
-  dateType: 'custom',
-  transactions: [],
-  isFiltering: false,
-  showPreview: false,
-  page: 0,
-  totalData: 0
-}, action) => {
+const openTrip = (state = defaultState, action) => {
   switch (action.type) {
     case types.TRAVELER.OPEN_TRIP.ON_STORE_OPEN_TRIPS:
-      newState = { ...state, openTrips: action.openTrips }
+      newState = { ...state, trips: action.trips }
+      return newState
+    case types.TRAVELER.OPEN_TRIP.ON_CHANGE_SEARCH_KEYWORD:
+      newState = { ...state, searchKeyword: action.searchKeyword }
       return newState
     default:
       return defaultState
   }
 }
 
-export default traveler
+export default openTrip
