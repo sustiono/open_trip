@@ -1,3 +1,5 @@
+import { camelizeKeys } from 'humps'
+
 import types from '../../../constantas/types'
 
 export const onStoreOpenTrips = trips => {
@@ -17,11 +19,14 @@ export const onChangeSearchKeyword = searchKeyword => {
 export const onSeacrhTrip = () => {
   return async (dispatch, getState) => {
     try {
-      console.log('search');
+      let state = getState()
+      let { searchKeyword: q } = state.traveler.openTrip
+      let response = await fetch(`/open_trips.json?q=${q}`)
+      let responseJson = await response.json()
+      let trips = camelizeKeys(responseJson)
+      dispatch(onStoreOpenTrips(trips))
     } catch (e) {
-
-    } finally {
-
+      console.log('Error: ', e);
     }
   }
 }

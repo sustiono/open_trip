@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Row } from 'reactstrap'
 
@@ -22,5 +23,16 @@ const OpenTripPanel = (props) => {
   )
 }
 
+const mapStateToProps = state => {
+  let { trips } = state.traveler.openTrip
+  return {
+    trips
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {}
+}
+
 OpenTripPanel.propTypes = propTypes
-export default OpenTripPanel
+export default connect(mapStateToProps, mapDispatchToProps)(OpenTripPanel)

@@ -32,7 +32,7 @@ const SearchTrip = props => {
 }
 
 const mapStateToProps = state => {
-  let { searchKeyword } = state.traveler
+  let { searchKeyword } = state.traveler.openTrip
   return {
     searchKeyword
   }
