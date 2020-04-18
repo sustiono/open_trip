@@ -6,17 +6,17 @@ import SearchTrip from './SearchTrip'
 import Trip from './Trip'
 
 const propTypes = {
-  openTrips: PropTypes.array.isRequired
+  trips: PropTypes.array.isRequired
 }
 
 const OpenTripPanel = (props) => {
-  let { openTrips } = props
+  let { trips } = props
   return (
     <React.Fragment>
       <SearchTrip />
 
       <Row className='justify-content-start'>
-        { openTrips.map(trip => <Trip trip={trip} />) }
+        { trips.map(trip => <Trip key={trip.id} trip={trip} />) }
       </Row>
     </React.Fragment>
   )

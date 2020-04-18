@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import openTrip from './open_trip'
+import traveler from './traveler'
 
 export default combineReducers({
-  openTrip
+  traveler
 })
